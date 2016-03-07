@@ -1,0 +1,27 @@
+Giovanni Rosati
+OSU ID# 932510038
+rosatig@oregonstate.edu
+
+March 6, 2016
+Lab 9 README
+CS_199_400_W2016
+
+
+The program can be compiled by typing "make all" and an executable file named “prog” will be created in the same directory. 
+
+Typing "make clean" will remove the prog file.
+
+The program lets the user choose from three different types of data to create a linked list:
+1) int
+2) doublt
+3) string
+
+Because myLL class and the node struct were created with templates for the data stored in the value data member, 
+the same class and struct can be used for all three data types.
+
+The main.cpp file (which has the main() function) essentially just serves the purpose of displaying menus and collecting user imputs.
+
+This program has been tested wtih data types of int, double, and string. It was compiled and tested on FLIP.
+
+
+

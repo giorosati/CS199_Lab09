@@ -10,12 +10,13 @@
 #include "node.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <string>
 
 //usings
 using std::cout;
 using std::endl;
 using std::cin;
-
+using std::string;
 
 #ifndef MYLL_HPP
 #define MYLL_HPP
@@ -31,17 +32,16 @@ public:
 	myLL(T valueIn);		//constructor
 	~myLL();				//deconstructor
 
-	//void displayList(Node* &head);
 	void displayList();
-	//Node* findLast(Node* &head);
+
 	Node<T>* findLast();
-	//void addValue(Node* &head, T valueIn);
+
 	void addValue(T valueIn);
-	//void removeLast(Node* &head);
+
 	void removeLast();
-	//void sort(Node* &head);
+
 	void sort();
-	//Node* search(Node* &head, T searchValue);
+
 	void search(T searchValue);
 };
 
@@ -83,7 +83,7 @@ void myLL<T>::displayList()
 		while (tempNode->next != NULL)
 		{
 			tempNode = tempNode->next;		//set tempNode to the next node
-			cout << tempNode->value << endl;//outputs nodes after head 
+			cout << tempNode->value << endl;//outputs nodes after head
 		}
 		cout << endl;
 	}
@@ -150,46 +150,60 @@ template <typename T>
 //void myLL<T>::sort(Node* &head)
 void myLL<T>::sort()
 {
-	Node<T>* tempNode = head;
-	T tempT = NULL;
-	bool swap;
-	do
+	if (head == NULL) cout << "List is empty - no elements to sort." << endl;
+	//else if (head->value< == NULL) cout << "No values in the list to sort" << endl;
+	else if (head->next == NULL) cout << "Only one item in the list." << endl;
+	else
 	{
-		swap = false;
+		Node<T>* tempNode;
+		T tempValue;
+		bool swap;
+		do
 		{
-			if (tempNode->value > tempNode->next->value)
+			tempNode = head;
+			swap = false;
+			do
 			{
-				tempT = tempNode->value;
-				tempNode->value = tempNode->next->value;
-				tempNode->next->value = tempT;
-				swap = true;
-			}
-			tempNode = tempNode->next;
-		}
-	} while (tempNode->next != NULL);
+				if (tempNode->value > tempNode->next->value)
+				{
+					tempValue = tempNode->value;
+					tempNode->value = tempNode->next->value;
+					tempNode->next->value = tempValue;
+					swap = true;
+				}
+				if (tempNode->next != NULL) tempNode = tempNode->next;
+			} while (tempNode->next != NULL);
+		} while (swap);
+	}
 }
 
 template <typename T>
 //void myLL<T>::search(Node* &head, T searchValue)
 void myLL<T>::search(T searchValue)
 {
-	Node<T>* tempNode = head;
-	bool found = false;
-	while (tempNode->next != NULL && found == false)
+	if (head == NULL) cout << "List is empty - no elements to search." << endl;
+	//else if (head->value == NULL) cout << "List is empty - no elements to search." << endl;
+	else
 	{
-		if (tempNode->value = searchValue)
+		Node<T>* tempNode = head;
+		bool found = false;
+		do
 		{
-			found = true;
-		}
-		else tempNode = tempNode->next;
-	}
-	if (tempNode->next == NULL)	//check the last node
-	{
-		if (tempNode->value == searchValue)
+			if (tempNode->value == searchValue)
+			{
+				found = true;
+			}
+			if (tempNode->next != NULL) tempNode = tempNode->next;
+		} while (tempNode->next != NULL && found == false);
+
+		if (tempNode->next == NULL)	//check the last node
 		{
-			found = true;
+			if (tempNode->value == searchValue)
+			{
+				found = true;
+			}
 		}
+		if (found == true) cout << searchValue << " was found in the list." << endl;
+		else cout << searchValue << " was NOT found in the list." << endl;
 	}
-	if (found == true) cout << searchValue << " was found in the list." << endl;
-	else cout << searchValue << " was NOT found in the list." << endl;
 }

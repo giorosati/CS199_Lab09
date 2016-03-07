@@ -33,9 +33,11 @@ int main()
 	string stringIn = "";
 
 	cout << "This program allows testing of a linked list using a templated class" << endl;
+	cout << "You can choose what type of data to use: int, double, or string." << endl;
 	cout << endl;
 
-	//display first menu
+	// display a menu and get user selection for what kind of data will be stored 
+	// in the value data member of the node
 	if (doneOne != true)
 	{
 		displayMenuOne();
@@ -59,9 +61,9 @@ int main()
 		}
 	}
 
-	if (typeOfLL == 1)			//int linked list option
+	if (typeOfLL == 1)			//begin code for the int linked list
 	{
-		myLL<int> list;			//create an int myLL
+		myLL<int> list;			//create an int linked list
 
 		while (done != true) {
 			displayMenu();
@@ -70,7 +72,7 @@ int main()
 			case 1:				//display the list
 				list.displayList();
 				break;
-			case 2:				//add a node
+			case 2:				//add a node to the end of the list
 				while (intIn < 0)
 				{
 					cout << "Enter a positive integer: ";
@@ -91,7 +93,7 @@ int main()
 			case 4:				//sort the list
 				list.sort();
 				break;
-			case 5:
+			case 5:				//search for a value in the list
 				while (intIn < 0)
 				{
 					cout << "Enter a positive integer: ";
@@ -104,7 +106,7 @@ int main()
 					}
 				}
 				list.search(intIn);
-				intIn = -1;
+				intIn = -1;		//reset intIn
 				break;
 			case 6:
 				done = true;
@@ -114,51 +116,138 @@ int main()
 				break;
 			}		//end of switch
 		}
-	}	//end of int LL section
+	}	//end of int linked list code
 
-//	if (typeOfLL == 2)		//create a double LL
-//	{
-//		while (doubleIn < 0)
-//		{
-//			cout << "Enter a positive integer: ";
-//			cin.ignore();
-//			cin >> doubleIn;
-//			if (doubleIn < 0)
-//			{
-//				cout << "Invalid entry..." << endl;
-//				cout << endl;
-//			}
-//		}
-//		myLL<double> list(doubleIn);
-//		doubleIn = -1;	//reset doubleIn
-//	}
-//
-//	if (typeOfLL == 3)	//create a string LL
-//	{
-//		while (stringIn.length() < 2)
-//		{
-//			cout << "Please enter a string of characters (at least two!): " << endl;
-//			cout << "Your string will end as of its first whitespace character." << endl;
-//			cout << "Enter your string: ";
-//			cin >> stringIn;
-//			cin.clear();
-//			cin.ignore(100, '\n');
-//			if (stringIn.length() < 2)
-//			{
-//				stringIn = "";
-//				cout << "Try again. Please enter at least two characters." << endl;
-//				cout << endl;
-//			}
-//		}
-//		cout << endl;
-//		myLL<string> list(stringIn);
-//		stringIn = "";
-//	}
+
+	if (typeOfLL == 2)		//begin code for the double linked list
+	{
+		myLL<double> list;			//create an double linked list
+
+		while (done != true) {
+			displayMenu();
+			choice = getInput();
+			switch (choice) {
+			case 1:				//display the list
+				list.displayList();
+				break;
+			case 2:				//add a node to the end of the list
+				while (doubleIn < 0)
+				{
+					cout << "Enter a positive double: ";
+					cin.ignore();
+					cin >> doubleIn;
+					if (doubleIn < 0)
+					{
+						cout << "Invalid entry..." << endl;
+						cout << endl;
+					}
+				}
+				list.addValue(doubleIn);
+				doubleIn = -1;		//reset doubleIn
+				break;
+			case 3:				//remove the last node
+				list.removeLast();
+				break;
+			case 4:				//sort the list
+				list.sort();
+				break;
+			case 5:				//search for a value in the list
+				while (doubleIn < 0)
+				{
+					cout << "Enter a positive double: ";
+					cin.ignore();
+					cin >> doubleIn;
+					if (doubleIn < 0)
+					{
+						cout << "Invalid entry..." << endl;
+						cout << endl;
+					}
+				}
+				list.search(doubleIn);
+				doubleIn = -1;	//reset doubleIn
+				break;
+			case 6:
+				done = true;
+				break;
+			default:
+				std::cout << "Not a valid choice" << std::endl;
+				break;
+			}		//end of switch
+		}
+	}	//end of double linked list code
+
+
+	if (typeOfLL == 3)			//begin code for the double linked list
+	{
+		myLL<string> list;			//create a string linked list
+
+		while (done != true) {
+			displayMenu();
+			choice = getInput();
+			switch (choice) {
+			case 1:				//display the list
+				list.displayList();
+				break;
+			case 2:				//add a node to the end of the list
+				while (stringIn.length() < 1)
+				{
+					cout << "Please enter a string of characters. " << endl;
+					cout << "Your string will end as of its first whitespace character." << endl;
+					cout << "Enter your string: ";
+					cin >> stringIn;
+					cin.clear();
+					cin.ignore(100, '\n');
+					if (stringIn.length() < 1)
+					{
+						stringIn = "";
+						cout << "Try again." << endl;
+						cout << endl;
+					}
+				}
+				cout << endl;
+				list.addValue(stringIn);
+				stringIn = "";		//reset stringIn
+				break;
+			case 3:				//remove the last node
+				list.removeLast();
+				break;
+			case 4:				//sort the list
+				list.sort();
+				break;
+			case 5:				//search for a value in the list
+				while (stringIn.length() < 1)
+				{
+					cout << "Please enter a string of characters. " << endl;
+					cout << "Your string will end as of its first whitespace character." << endl;
+					cout << "Enter your string: ";
+					cin >> stringIn;
+					cin.clear();
+					cin.ignore(100, '\n');
+					if (stringIn.length() < 1)
+					{
+						stringIn = "";
+						cout << "Try again." << endl;
+						cout << endl;
+					}
+				}
+				cout << endl;
+				list.search(stringIn);
+				stringIn = "";	//reset stringIn
+				break;
+			case 6:
+				done = true;
+				break;
+			default:
+				std::cout << "Not a valid choice" << std::endl;
+				break;
+			}		//end of switch
+		}
+	}	//end of double linked list section
 }
 
 //functions
 
-void displayMenuOne()
+void displayMenuOne()		//displays user choice for type of data
 {
 	cout << endl;
 	cout << "Choose the type of value for the list" << endl;
@@ -170,7 +259,7 @@ void displayMenuOne()
 	cout << endl;
 }
 
-void displayMenu()
+void displayMenu()		//displays user choices for the linked list
 {
 	cout << endl;
 	cout << "What would you like to do?" << endl;
@@ -184,7 +273,7 @@ void displayMenu()
 	cout << endl;
 }
 
-int getInput() {
+int getInput() {	//to collect user responses to menus
 	int choice;
 	cout << "Choice: ";
 	cin >> choice;
