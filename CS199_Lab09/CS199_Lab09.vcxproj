@@ -118,15 +118,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="myLL.hpp" />
     <ClInclude Include="node.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="makefile" />
     <None Include="README" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lab9.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

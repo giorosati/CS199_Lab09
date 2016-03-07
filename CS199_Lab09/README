@@ -13,15 +13,15 @@ Typing "make clean" will remove the prog file.
 
 The program lets the user choose from three different types of data to create a linked list:
 1) int
-2) doublt
+2) double
 3) string
 
 Because myLL class and the node struct were created with templates for the data stored in the value data member, 
-the same class and struct can be used for all three data types.
+the myLL and Node can be used for all three data types.
 
-The main.cpp file (which has the main() function) essentially just serves the purpose of displaying menus and collecting user imputs.
+The supplied lab9.cpp file (which has the main() function) serves the purpose of displaying menus, getting user imputs, and then calling the functions of myLL.
 
-This program has been tested wtih data types of int, double, and string. It was compiled and tested on FLIP.
+This program was compiled and tested on FLIP and has been tested with int, double, and string data types.
 
 
 

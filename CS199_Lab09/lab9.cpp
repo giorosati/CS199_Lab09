@@ -1,9 +1,9 @@
 /*********************************************************************
-** Program Filename: main.cpp
+** Program Filename: lab9.cpp
 ** Author: Giovanni Rosati
 ** email: rosatig@oregonstate.edu
 ** Date: 2016-03-06
-** Description: File with main() for CS199_400 Lab 8
+** Description: File with main() for testing CS199_400 Lab 8
 *********************************************************************/
 
 #include <iostream>

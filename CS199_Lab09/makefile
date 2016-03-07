@@ -1,4 +1,4 @@
 clean:
 	rm prog
 all:
-	g++ main.cpp myLL.hpp node.hpp -o prog
+	g++ lab9.cpp myLL.hpp node.hpp -o prog

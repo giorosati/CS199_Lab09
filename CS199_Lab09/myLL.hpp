@@ -4,6 +4,8 @@
 ** email: rosatig@oregonstate.edu
 ** Date: 2016-03-06
 ** Description: myLL class header and implementation - CS199_400 Lab09
+** This linked list class was tested and works with int, double, and string
+** data types.
 *********************************************************************/
 
 //includes
@@ -28,46 +30,34 @@ private:
 	Node<T>* head;
 
 public:
-	myLL();					//default constructor
-	myLL(T valueIn);		//constructor
-	~myLL();				//deconstructor
-
-	void displayList();
-
-	Node<T>* findLast();
-
-	void addValue(T valueIn);
-
-	void removeLast();
-
-	void sort();
-
-	void search(T searchValue);
+	myLL();						//default constructor
+	~myLL();					//deconstructor
+	void displayList();			//display the list
+	Node<T>* findLast();		//finds and returns the last node's pointer
+	void addValue(T valueIn);	//adds a node to the end of the list
+	void removeLast();			//removes the last node
+	void sort();				//sorts the list
+	void search(T searchValue);	//searches the list for a user entered value
 };
 
 #endif
 
+//default constructor
 template <typename T>
 myLL<T>::myLL()
 {
 	head = NULL;
 }
 
-template <typename T>
-myLL<T>::myLL(T valueIn)
-{
-	this->head = new Node<T>;
-	this->value = valueIn;
-}
-
+//deconstructor
 template <typename T>
 myLL<T>::~myLL()
 {
 	//cout << "deconstructor has run" << endl;
 }
 
+//displays the list
 template <typename T>
-///void myLL<T>::displayList(Node* &head)
 void myLL<T>::displayList()
 {
 	if (head == NULL)
@@ -89,8 +79,8 @@ void myLL<T>::displayList()
 	}
 }
 
+//adds a node to the end of the list
 template <typename T>
-//void myLL<T>::addValue(Node* &head, T valueIn)
 void myLL<T>::addValue(T valueIn)
 {
 	if (head == NULL)		//case where no nodes exist
@@ -112,9 +102,10 @@ void myLL<T>::addValue(T valueIn)
 	}
 }
 
+//removes the last node
 template <typename T>
 void myLL<T>::removeLast()
-//void myLL<T>::removeLast(Node* &head)	//removes the last node, if any
+//removes the last node, if any
 {
 	if (head == NULL)
 	{
@@ -134,8 +125,8 @@ void myLL<T>::removeLast()
 	cout << endl;
 }
 
+//finds and returns the last node's pointer
 template <typename T>
-//Node* myLL<T>::findLast(Node* &head)
 Node<T>* myLL<T>::findLast()
 {
 	Node<T>* tempNode = head;
@@ -146,12 +137,11 @@ Node<T>* myLL<T>::findLast()
 	return tempNode;
 }
 
+//sorts the list
 template <typename T>
-//void myLL<T>::sort(Node* &head)
 void myLL<T>::sort()
 {
 	if (head == NULL) cout << "List is empty - no elements to sort." << endl;
-	//else if (head->value< == NULL) cout << "No values in the list to sort" << endl;
 	else if (head->next == NULL) cout << "Only one item in the list." << endl;
 	else
 	{
@@ -177,12 +167,11 @@ void myLL<T>::sort()
 	}
 }
 
+//searches the list for a user entered value
 template <typename T>
-//void myLL<T>::search(Node* &head, T searchValue)
 void myLL<T>::search(T searchValue)
 {
 	if (head == NULL) cout << "List is empty - no elements to search." << endl;
-	//else if (head->value == NULL) cout << "List is empty - no elements to search." << endl;
 	else
 	{
 		Node<T>* tempNode = head;
